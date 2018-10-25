@@ -1,16 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { SlideToggleModule } from './slide-toggle/slide-toggle.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserAnimationsModule,
+    SlideToggleModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
