@@ -10,6 +10,7 @@ import { ToggleOptionComponent } from '../toggle-option/toggle-option.component'
 })
 export class PillComponent {
   @Input() selectedOption: ToggleOptionComponent;
+  @HostBinding('class.toggle-group-pill') pillStyle = true;
 
   @HostBinding('style.width')
   get width(): string {
@@ -28,6 +29,4 @@ export class PillComponent {
       return `translateX(0px)`;
     }
   }
-
-  @HostBinding('class.toggle-group-pill') pillStyle = true;
 }
