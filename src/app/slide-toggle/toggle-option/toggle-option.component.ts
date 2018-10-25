@@ -10,6 +10,7 @@ export class ToggleOptionComponent {
   @ViewChild('button') option: ElementRef<HTMLButtonElement>;
   @Input() value: string;
   selected = false;
+  group: SlideToggleGroupComponent;
 
   get width(): number {
     return this.option.nativeElement.clientWidth;
@@ -18,8 +19,6 @@ export class ToggleOptionComponent {
   get offset(): number {
     return this.option.nativeElement.offsetLeft;
   }
-
-  group: SlideToggleGroupComponent;
 
   setSelected(): void {
     this.group.setSelectedOption(this.value);
