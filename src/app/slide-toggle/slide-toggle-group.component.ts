@@ -1,14 +1,16 @@
-import { Component, QueryList, AfterViewInit, Input, ContentChildren } from '@angular/core';
+import { Component, QueryList, AfterViewInit, Input, ContentChildren, HostBinding, ViewEncapsulation } from '@angular/core';
 import { ToggleOptionComponent } from './toggle-option/toggle-option.component';
 
 @Component({
   selector: 'app-slide-toggle-group',
   templateUrl: './slide-toggle-group.component.html',
-  styleUrls: ['./slide-toggle-group.component.scss']
+  styleUrls: ['./slide-toggle-group.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SlideToggleGroupComponent implements AfterViewInit {
   @Input() value: string;
   @ContentChildren(ToggleOptionComponent) options: QueryList<ToggleOptionComponent>;
+  @HostBinding('class.toggle-button-container') buttonContainer = true;
   selectedOption: ToggleOptionComponent;
 
   ngAfterViewInit() {
