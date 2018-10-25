@@ -1,15 +1,17 @@
-<app-slide-toggle-group>
+<app-slide-toggle-group (selectionChange)="chosenValue = $event">
   <app-toggle-option value="approved">Godkjent</app-toggle-option>
   <app-toggle-option value="notApproved">Ikke godkjent</app-toggle-option>
 </app-slide-toggle-group>
 
-<app-slide-toggle-group>
+<app-slide-toggle-group (selectionChange)="chosenValue = $event">
   <app-toggle-option value="beer">Øl</app-toggle-option>
   <app-toggle-option value="wine">Vin</app-toggle-option>
   <app-toggle-option value="liquor">Sprit</app-toggle-option>
 </app-slide-toggle-group>
 
-<app-slide-toggle-group>
+<app-slide-toggle-group (selectionChange)="chosenValue = $event">
   <app-toggle-option value="long">En lang tekst for å se hvordan det fungerer</app-toggle-option>
   <app-toggle-option value="short">Kort tekst</app-toggle-option>
 </app-slide-toggle-group>
+
+<p style="margin-left: 20px">Valgt verdi er: {{chosenValue}}</p>

@@ -1,4 +1,4 @@
-import { Component, QueryList, AfterViewInit, Input, ContentChildren, HostBinding, ViewEncapsulation } from '@angular/core';
+import { Component, QueryList, AfterViewInit, Input, ContentChildren, HostBinding, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { ToggleOptionComponent } from './toggle-option/toggle-option.component';
 
 @Component({
@@ -9,6 +9,7 @@ import { ToggleOptionComponent } from './toggle-option/toggle-option.component';
 })
 export class SlideToggleGroupComponent implements AfterViewInit {
   @Input() value: string;
+  @Output() selectionChange = new EventEmitter<string>();
   @ContentChildren(ToggleOptionComponent) options: QueryList<ToggleOptionComponent>;
   @HostBinding('class.toggle-button-container') buttonContainer = true;
   selectedOption: ToggleOptionComponent;
@@ -21,6 +22,7 @@ export class SlideToggleGroupComponent implements AfterViewInit {
         this.selectedOption = this.options.first;
       }
       this.selectedOption.selected = true;
+      this.selectionChange.emit(this.selectedOption.value);
   
       this.options.forEach(option => option.group = this);
     })
@@ -30,5 +32,6 @@ export class SlideToggleGroupComponent implements AfterViewInit {
     this.options.forEach(option => option.selected = false);
     this.selectedOption = this.options.find(option => option.value === value);
     this.selectedOption.selected = true;
+    this.selectionChange.emit(this.selectedOption.value);
   }
 }
