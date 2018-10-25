@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, ViewEncapsulation } from '@angular/core';
+import { Component, Input, HostBinding, ViewEncapsulation, OnChanges } from '@angular/core';
 
 import { ToggleOptionComponent } from '../toggle-option/toggle-option.component';
 
@@ -8,25 +8,19 @@ import { ToggleOptionComponent } from '../toggle-option/toggle-option.component'
   styleUrls: ['./pill.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PillComponent {
+export class PillComponent implements OnChanges {
   @Input() selectedOption: ToggleOptionComponent;
   @HostBinding('class.toggle-group-pill') pillStyle = true;
+  @HostBinding('style.width') width: string;
+  @HostBinding('style.transform') offset: string;
 
-  @HostBinding('style.width')
-  get width(): string {
+  ngOnChanges(): void {
     if (this.selectedOption) {
-      return `${this.selectedOption.width}px`;
+      this.offset = `translateX(${this.selectedOption.offset}px)`;
+      this.width = `${this.selectedOption.width}px`;
     } else {
-      return '0px';
-    }
-  }
-
-  @HostBinding('style.transform')
-  get offset(): string {
-    if (this.selectedOption) {
-      return `translateX(${this.selectedOption.offset}px)`;
-    } else {
-      return `translateX(0px)`;
+      this.offset = `translateX(0px)`;
+      this.width = '0px';
     }
   }
 }
