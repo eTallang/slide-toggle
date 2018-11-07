@@ -3,7 +3,7 @@ $color: #003145;
 .toggle-button-container {
   display: inline-block;
   position: relative;
-  background-color: $color;
+  background-color: transparent;
   border-radius: 999999px;
-  border: 1px solid $color;
+  border: 1px solid white;
 }
