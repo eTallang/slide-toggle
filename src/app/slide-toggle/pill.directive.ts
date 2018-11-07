@@ -1,14 +1,11 @@
-import { Component, Input, HostBinding, ViewEncapsulation, OnChanges } from '@angular/core';
+import { Input, HostBinding, OnChanges, Directive } from '@angular/core';
 
-import { ToggleOptionComponent } from '../toggle-option/toggle-option.component';
+import { ToggleOptionComponent } from './toggle-option/toggle-option.component';
 
-@Component({
-  selector: 'app-pill',
-  templateUrl: './pill.component.html',
-  styleUrls: ['./pill.component.scss'],
-  encapsulation: ViewEncapsulation.None
+@Directive({
+  selector: 'app-pill'
 })
-export class PillComponent implements OnChanges {
+export class PillDirective implements OnChanges {
   @Input() selectedOption: ToggleOptionComponent;
   @HostBinding('class.toggle-group-pill') pillStyle = true;
   @HostBinding('style.width') width: string;
