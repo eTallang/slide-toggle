@@ -9,7 +9,9 @@ import { SlideToggleGroupComponent } from '../slide-toggle-group.component';
 export class ToggleOptionComponent {
   @ViewChild('button') option: ElementRef<HTMLButtonElement>;
   @Input() value: string;
+  
   selected = false;
+  disabled = false;
   group: SlideToggleGroupComponent;
 
   get width(): number {
