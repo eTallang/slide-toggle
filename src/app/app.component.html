@@ -4,10 +4,11 @@
   <app-toggle-option value="notAccepted">Not accepted</app-toggle-option>
 </app-slide-toggle-group>
 
-<app-slide-toggle-group (selectionChange)="chosenValue = $event" disabled>
+<app-slide-toggle-group (selectionChange)="chosenValue = $event" [disabled]="disabled">
   <app-toggle-option value="accepted">Accepted</app-toggle-option>
   <app-toggle-option value="none">None</app-toggle-option>
   <app-toggle-option value="notAccepted">Not accepted</app-toggle-option>
 </app-slide-toggle-group>
 
 <p style="margin-left: 20px; color: white">Valgt verdi er: {{chosenValue}}</p>
+<button (click)="disabled = !disabled">Toggle disable</button>
